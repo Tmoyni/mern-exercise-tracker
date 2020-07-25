@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 
 
 export default class ExercisesList extends Component {
@@ -7,13 +9,22 @@ export default class ExercisesList extends Component {
     username: ''
   }
 
-  onSubmit(e) {
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  }
+
+  onSubmit = (e) => {
     e.preventDefault();
     const newUser = {
       username: this.state.username
     };
 
     console.log(newUser)
+
+    axios.post('http://localhost:5000/users/add', newUser)                
+    .then(res => console.log(res.data));
 
     this.setState({
       username: ''
@@ -31,7 +42,7 @@ export default class ExercisesList extends Component {
                 required
                 className="form-control"
                 value={this.state.username}
-                onChange={this.onChangeUsername}
+                onChange={(e) => this.onChangeUsername(e)}
                 />
           </div>
           <div className="form-group">
