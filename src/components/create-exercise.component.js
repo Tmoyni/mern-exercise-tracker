@@ -36,13 +36,13 @@ export default class ExercisesList extends Component {
     })
   }
 
-  onChangeDescription(e) {
+  onChangeDescription = (e) => {
     this.setState({
       description: e.target.value
     })
   }
 
-  onChangeDuration(e) {
+  onChangeDuration = (e) => {
     this.setState({
       duration: e.target.value
     })
@@ -54,7 +54,7 @@ export default class ExercisesList extends Component {
     });
   };
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
     const exercise = {
       username: this.state.username,
